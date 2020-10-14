@@ -1,0 +1,22 @@
+{
+  "firstName": "John",
+  "surName": "Doe6",
+  "middleName": null,
+  "birthDate": null,
+  "birthPlace": null,
+  "sex": null,
+  "passportNum": null,
+  "phoneNumber": null,
+  "accounts": [
+    {
+      "accNumber": "01",
+      "accCurrency": "BRL",
+      "accBalance": 10
+    },
+    {
+      "accNumber": "02",
+      "accCurrency": "UAH",
+      "accBalance": 20
+    }
+  ]
+}
