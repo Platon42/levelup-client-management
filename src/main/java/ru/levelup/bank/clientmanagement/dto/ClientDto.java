@@ -12,9 +12,10 @@ public class ClientDto {
     private String surName;
     private String middleName;
     private Date birthDate;
+    private Integer age;
     private String birthPlace;
     private String sex;
-    private Integer passportNum;
+    private String passportNum;
     private String phoneNumber;
     @JsonProperty("accounts")
     private List<AccountDto> accountDtoList;
