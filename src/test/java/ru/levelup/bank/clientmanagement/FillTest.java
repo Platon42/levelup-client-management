@@ -17,11 +17,9 @@ public class FillTest {
         ArrayList<AccountDto> accountDtos = new ArrayList<>();
         AccountDto accountDto1 = new AccountDto();
         accountDto1.setAccNumber("01");
-        accountDto1.setAccBalance(10.0);
         accountDto1.setAccCurrency(CurrencyCode.BRL);
         AccountDto accountDto2 = new AccountDto();
         accountDto2.setAccNumber("02");
-        accountDto2.setAccBalance(20.0);
         accountDto2.setAccCurrency(CurrencyCode.UAH);
         accountDtos.add(accountDto1);
         accountDtos.add(accountDto2);

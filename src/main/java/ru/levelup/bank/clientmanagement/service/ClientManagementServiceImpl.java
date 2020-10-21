@@ -1,37 +1,60 @@
 package ru.levelup.bank.clientmanagement.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.levelup.bank.clientmanagement.dao.AccountEntity;
+import ru.levelup.bank.clientmanagement.dao.BalanceEntity;
+import ru.levelup.bank.clientmanagement.dao.ClientEntity;
 import ru.levelup.bank.clientmanagement.dto.ClientDto;
+import ru.levelup.bank.clientmanagement.repo.AccountRepo;
+import ru.levelup.bank.clientmanagement.repo.BalanceRepo;
+import ru.levelup.bank.clientmanagement.repo.ClientRepo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.OpenOption;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import java.sql.Date;
 
 @Service
 public class ClientManagementServiceImpl implements ClientManagementService {
 
     @Autowired
-    private ObjectMapper objectMapper;
-    private static final File clientsData = new File("C:\\Users\\Platon\\IdeaProjects\\client-management\\data\\clients.dat");
+    private AccountRepo accountRepo;
+
+    @Autowired
+    private ClientRepo clientRepo;
+
+    @Autowired
+    private BalanceRepo balanceRepo;
 
     public String createClient(ClientDto clientDto) {
-        try {
-            //objectMapper.writeValue(clientsData, clientDto);
-            //File clientsData = new File("C:\\Users\\Platon\\IdeaProjects\\client-management\\data\\clients.dat");
-            //FileWriter fileWriter = new FileWriter(clientsData, Boolean.TRUE);
-            String client = objectMapper.writeValueAsString(clientDto);
-            Files.writeString(Path.of("C:\\Users\\Platon\\IdeaProjects\\client-management\\data\\clients.dat"),client, StandardOpenOption.APPEND);
-            //fileWriter.write(client);
-            return "Success creating client with name" + clientDto.toString();
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-            return "Unable to create client with name" + clientDto.toString();
-        }
+
+        ClientEntity clientEntity = new ClientEntity();
+        clientEntity.setAge(clientDto.getAge());
+        clientEntity.setBirthDate(clientDto.getBirthDate());
+        clientEntity.setFirstName(clientDto.getFirstName());
+        clientEntity.setSurName(clientDto.getSurName());
+        clientEntity.setMiddleName(clientDto.getMiddleName());
+        clientEntity.setPassportNum(clientDto.getPassportNum());
+        clientEntity.setSex(clientDto.getSex());
+        clientEntity.setPhoneNumber(clientDto.getPhoneNumber());
+        clientEntity.setBirthPlace(clientDto.getBirthPlace());
+        clientRepo.save(clientEntity);
+
+        clientDto.getAccountDtoList().forEach(accountDto -> {
+            AccountEntity accountEntity = new AccountEntity();
+            accountEntity.setAccNumber(accountDto.getAccNumber());
+            accountEntity.setCurrencyCode(accountDto.getAccCurrency().name());
+            accountEntity.setClientByClientId(clientEntity);
+            accountRepo.save(accountEntity);
+        });
+        clientDto.getAccountDtoList().forEach(accountDto -> {
+            BalanceEntity balanceEntity = new BalanceEntity();
+            balanceEntity.setBalanceBefore(0.0);
+            balanceEntity.setBalanceAfter(0.0);
+            balanceEntity.setCurrency(accountDto.getAccCurrency().name());
+            //balanceEntity.set(accountEntity);
+            balanceRepo.save(balanceEntity);
+        });
+
+
+        return "Success creating client with name" + clientDto.toString();
     }
 }

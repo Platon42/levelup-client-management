@@ -6,5 +6,4 @@ import lombok.Data;
 public class AccountDto {
     private String accNumber;
     private CurrencyCode accCurrency;
-    private Double accBalance;
 }

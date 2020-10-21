@@ -19,13 +19,11 @@
       "accounts": [
         {
           "accNumber": "011",
-          "accCurrency": "BRL",
-          "accBalance": 10.0
+          "accCurrency": "BRL"
         },
         {
           "accNumber": "022",
-          "accCurrency": "UAH",
-          "accBalance": 20.44
+          "accCurrency": "UAH"
         }
       ]
     }
@@ -119,13 +117,11 @@
         [
           {
             "accNumber": "011",
-            "accCurrency": "BRL",
-            "accBalance": 10.0
+            "accCurrency": "BRL"
           },
           {
             "accNumber": "022",
-            "accCurrency": "UAH",
-            "accBalance": 20.44
+            "accCurrency": "UAH"
           }
         ]
       ],
@@ -140,8 +136,7 @@
             "default": {},
             "required": [
               "accNumber",
-              "accCurrency",
-              "accBalance"
+              "accCurrency"
             ],
             "properties": {
               "accNumber": {
@@ -160,13 +155,6 @@
                 "examples": [
                   "BRL"
                 ]
-              },
-              "accBalance": {
-                "$id": "#/properties/accounts/items/anyOf/0/properties/accBalance",
-                "type": "number",
-                "title": "The accBalance schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": 0.0
               }
             },
             "additionalProperties": true
