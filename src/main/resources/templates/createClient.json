@@ -1,22 +1,20 @@
 {
-  "firstName": "John",
-  "surName": "Doe6",
+  "firstName": "John2",
+  "surName": "Mars",
   "middleName": null,
-  "birthDate": null,
+  "birthDate": "2001-08-01",
+  "age": 15,
   "birthPlace": null,
-  "sex": null,
-  "passportNum": null,
-  "phoneNumber": null,
-  "accounts": [
+  "sex": "male",
+  "passportNum": "1410445442",
+  "phoneNumber": "+78411001101",
+  "accounts": [{
+    "accNumber": "011",
+    "accCurrency": "BRL"
+  },
     {
-      "accNumber": "01",
-      "accCurrency": "BRL",
-      "accBalance": 10
-    },
-    {
-      "accNumber": "02",
-      "accCurrency": "UAH",
-      "accBalance": 20
+      "accNumber": "022",
+      "accCurrency": "UAH"
     }
   ]
 }
