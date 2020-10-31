@@ -18,6 +18,7 @@ public class TransactionEntity {
 
     @Id
     @Column(name = "transaction_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getTransactionId() {
         return transactionId;
     }

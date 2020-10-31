@@ -10,12 +10,13 @@ public class AccountEntity {
     private int accountId;
     private String accNumber;
     private String currencyCode;
-    private Integer clientId;
+    //private Integer clientId;
     private ClientEntity clientByClientId;
     private Collection<BalanceEntity> balancesByAccountId;
 
     @Id
     @Column(name = "account_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getAccountId() {
         return accountId;
     }
@@ -44,6 +45,7 @@ public class AccountEntity {
         this.currencyCode = currencyCode;
     }
 
+    /*
     @Basic
     @Column(name = "client_id")
     public Integer getClientId() {
@@ -54,6 +56,7 @@ public class AccountEntity {
         this.clientId = clientId;
     }
 
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,17 +64,17 @@ public class AccountEntity {
         AccountEntity that = (AccountEntity) o;
         return accountId == that.accountId &&
                 Objects.equals(accNumber, that.accNumber) &&
-                Objects.equals(currencyCode, that.currencyCode) &&
-                Objects.equals(clientId, that.clientId);
+                Objects.equals(currencyCode, that.currencyCode);
+                //Objects.equals(clientId, that.clientId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountId, accNumber, currencyCode, clientId);
+        return Objects.hash(accountId, accNumber, currencyCode);
     }
 
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "client_id", insertable = false, updatable = false)
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     public ClientEntity getClientByClientId() {
         return clientByClientId;
     }

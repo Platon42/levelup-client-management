@@ -10,13 +10,14 @@ public class BalanceEntity {
     private double balanceAfter;
     private double balanceBefore;
     private String currency;
-    private Integer accountId;
-    private Integer transactionId;
+    //private Integer accountId;
+    //private Integer transactionId;
     private AccountEntity accountByAccountId;
     private TransactionEntity transactionByTransactionId;
 
     @Id
     @Column(name = "balance_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getBalanceId() {
         return balanceId;
     }
@@ -54,7 +55,7 @@ public class BalanceEntity {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
-
+/*
     @Basic
     @Column(name = "account_id")
     public Integer getAccountId() {
@@ -65,6 +66,7 @@ public class BalanceEntity {
         this.accountId = accountId;
     }
 
+
     @Basic
     @Column(name = "transaction_id")
     public Integer getTransactionId() {
@@ -74,7 +76,7 @@ public class BalanceEntity {
     public void setTransactionId(Integer transactionId) {
         this.transactionId = transactionId;
     }
-
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,18 +85,18 @@ public class BalanceEntity {
         return balanceId == that.balanceId &&
                 Double.compare(that.balanceAfter, balanceAfter) == 0 &&
                 Double.compare(that.balanceBefore, balanceBefore) == 0 &&
-                Objects.equals(currency, that.currency) &&
-                Objects.equals(accountId, that.accountId) &&
-                Objects.equals(transactionId, that.transactionId);
+                Objects.equals(currency, that.currency);
+                //Objects.equals(accountId, that.accountId) &&
+                //Objects.equals(transactionId, that.transactionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(balanceId, balanceAfter, balanceBefore, currency, accountId, transactionId);
+        return Objects.hash(balanceId, balanceAfter, balanceBefore, currency);
     }
 
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "account_id", updatable = false, insertable = false)
+    @JoinColumn(name = "account_id", referencedColumnName = "account_id")
     public AccountEntity getAccountByAccountId() {
         return accountByAccountId;
     }
@@ -104,7 +106,7 @@ public class BalanceEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "transaction_id", referencedColumnName = "transaction_id", updatable = false, insertable = false)
+    @JoinColumn(name = "transaction_id", referencedColumnName = "transaction_id")
     public TransactionEntity getTransactionByTransactionId() {
         return transactionByTransactionId;
     }

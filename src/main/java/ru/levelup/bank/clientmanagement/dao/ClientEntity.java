@@ -7,6 +7,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "client", schema = "public", catalog = "bank_db")
+//@NamedQuery(
+//        name = "Client.findByFirstNameAndSurNameAndMiddleNameAndBirthDate",
+//        query = "select firstName, surName, middleName, birthDate from ClientEntity where ")
+        //first_name, sur_name, middle_name, birth_date
 public class ClientEntity {
     private int clientId;
     private String firstName;
@@ -22,6 +26,7 @@ public class ClientEntity {
 
     @Id
     @Column(name = "client_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getClientId() {
         return clientId;
     }

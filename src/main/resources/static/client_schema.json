@@ -57,7 +57,7 @@
     },
     "middleName": {
       "$id": "#/properties/middleName",
-      "type": "null",
+      "type": "string",
       "title": "The middleName schema",
       "description": "An explanation about the purpose of this instance.",
       "default": null
@@ -80,7 +80,7 @@
     },
     "birthPlace": {
       "$id": "#/properties/birthPlace",
-      "type": "null",
+      "type": "string",
       "title": "The birthPlace schema",
       "description": "An explanation about the purpose of this instance.",
       "default": null
