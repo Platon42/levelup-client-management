@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,9 +27,10 @@ public class SchemaValidator {
     public ValidationResult validateSchema(String jsonInstance) throws JsonProcessingException {
 
         String rawSchema = null;
+        File d = new File("./config/client_schema.json");
+
         try {
-            rawSchema = new String(Files.readAllBytes
-                    (Paths.get("src/main/resources/static/client_schema.json")));
+            rawSchema = new String(Files.readAllBytes(d.toPath()));
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
 
