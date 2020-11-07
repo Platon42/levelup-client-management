@@ -28,7 +28,7 @@ public class SchemaValidator {
         String rawSchema = null;
         try {
             rawSchema = new String(Files.readAllBytes
-                    (Paths.get("C:\\Users\\Platon\\IdeaProjects\\client-management\\src\\main\\resources\\static\\client_schema.json")));
+                    (Paths.get("src/main/resources/static/client_schema.json")));
         } catch (IOException e) {
             System.out.println(e.getLocalizedMessage());
 

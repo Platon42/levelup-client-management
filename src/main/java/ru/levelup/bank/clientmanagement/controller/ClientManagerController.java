@@ -26,7 +26,6 @@ public class ClientManagerController {
     private ObjectMapper objectMapper;
 
 
-
     @PostMapping("/client/create")
     public String createClient (@RequestBody String raw) throws JsonProcessingException {
         ValidationResult validationResult = schemaValidator.validateSchema(raw);
