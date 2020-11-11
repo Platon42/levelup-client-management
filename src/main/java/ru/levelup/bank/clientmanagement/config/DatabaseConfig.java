@@ -14,12 +14,15 @@ public class DatabaseConfig {
     @Value("${database.password}")
     private String password;
 
+    @Value("${database.url}")
+    private String databaseUrl;
+
     @Bean
     @Primary
     public DataSource getDataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.postgresql.Driver");
-        dataSourceBuilder.url("jdbc:postgresql://95.163.214.27:5432/bank_db");
+        dataSourceBuilder.url(databaseUrl);
         dataSourceBuilder.username("postgres");
         dataSourceBuilder.password(password);
         return dataSourceBuilder.build();
