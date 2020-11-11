@@ -1,20 +1,20 @@
 {
-  "firstName": "John2",
-  "surName": "Mars",
-  "middleName": null,
+  "firstName": "Ivan",
+  "surName": "Venus",
+  "middleName": "W",
   "birthDate": "2001-08-01",
-  "age": 15,
-  "birthPlace": null,
+  "age": 20,
+  "birthPlace": "Russia",
   "sex": "male",
   "passportNum": "1410445442",
   "phoneNumber": "+78411001101",
   "accounts": [{
-    "accNumber": "011",
-    "accCurrency": "BRL"
+    "accNumber": "0511",
+    "accCurrency": "USD"
   },
     {
-      "accNumber": "022",
-      "accCurrency": "UAH"
+      "accNumber": "02222",
+      "accCurrency": "USD"
     }
   ]
 }

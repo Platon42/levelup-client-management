@@ -11,6 +11,9 @@ import javax.sql.DataSource;
 @Configuration
 public class DatabaseConfig {
 
+    @Value("${database.password}")
+    private String password;
+
     @Bean
     @Primary
     public DataSource getDataSource() {
@@ -18,7 +21,7 @@ public class DatabaseConfig {
         dataSourceBuilder.driverClassName("org.postgresql.Driver");
         dataSourceBuilder.url("jdbc:postgresql://95.163.214.27:5432/bank_db");
         dataSourceBuilder.username("postgres");
-        dataSourceBuilder.password("NdWRFmEV9pNhbgwQseZ3jKAPfXf4pMjwPD6f");
+        dataSourceBuilder.password(password);
         return dataSourceBuilder.build();
     }
 }

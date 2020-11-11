@@ -38,6 +38,18 @@ public class ClientManagerController {
         return clientManagementService.createClient(clientDto);
     }
 
+    @PostMapping("/secure/client/create")
+    public String createClientSecure (@RequestBody String raw) throws JsonProcessingException {
+        ValidationResult validationResult = schemaValidator.validateSchema(raw);
+        Set<ValidationMessage> messages = validationResult.getValidationMessages();
+        if (!messages.isEmpty()) {
+            return objectMapper.writeValueAsString(messages);
+        }
+        ClientDto clientDto = objectMapper.readValue(raw, ClientDto.class);
+        return clientManagementService.createClient(clientDto);
+    }
+
+
     @GetMapping("/client/account_amount")
     public AccountDto getAccountInfo(@RequestParam(value = "account_no", defaultValue = "")
                                              String accountNo) {

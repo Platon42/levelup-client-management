@@ -20,7 +20,6 @@ public class BasicAuth extends WebSecurityConfigurerAdapter {
     @Value("${web.security.password}")
     private String password;
 
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()

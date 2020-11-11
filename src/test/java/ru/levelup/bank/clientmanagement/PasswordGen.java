@@ -5,6 +5,7 @@ import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 
 public class PasswordGen {
+
     public static StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
@@ -20,6 +21,6 @@ public class PasswordGen {
     }
 
     public static void main(String[] args) {
-        System.out.println(stringEncryptor().encrypt(""));
+        System.out.println(stringEncryptor().encrypt("levelup2020"));
     }
 }
