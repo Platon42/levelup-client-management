@@ -31,7 +31,7 @@ public class BasicAuth extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .antMatcher("/secure/*")
+                .antMatcher("/secure/*/*")
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
