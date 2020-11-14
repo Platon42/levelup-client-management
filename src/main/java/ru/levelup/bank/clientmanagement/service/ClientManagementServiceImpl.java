@@ -69,16 +69,17 @@ public class ClientManagementServiceImpl implements ClientManagementService {
         return "Success creating client with name " + clientDto.toString();
     }
 
-    private boolean isClientPresent(ClientDto clientDto) {
+    public boolean isClientPresent(ClientDto clientDto) {
 
         String firstName = clientDto.getFirstName();
         String surName = clientDto.getSurName();
         String middleName = clientDto.getMiddleName();
         Date birthDate = clientDto.getBirthDate();
 
-        var clientEntities =
+        var clientEntity =
                 clientRepo.findByFirstNameAndSurNameAndMiddleNameAndBirthDate(firstName, surName, middleName, birthDate);
-        return !clientEntities.isEmpty();
+
+        return clientEntity != null;
 
     }
 

@@ -55,4 +55,9 @@ public class ClientManagerController {
                                              String accountNo) {
         return clientManagementService.getAccountInfo(accountNo);
     }
+
+    @GetMapping("/hello")
+    public String helloMessage() {
+        return "Hello, World";
+    }
 }

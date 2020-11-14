@@ -7,5 +7,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface ClientRepo extends JpaRepository<ClientEntity,Integer> {
-    List<ClientEntity> findByFirstNameAndSurNameAndMiddleNameAndBirthDate(String firstName, String surName, String middleName, Date birthDate);
+    ClientEntity findByFirstNameAndSurNameAndMiddleNameAndBirthDate(String firstName, String surName, String middleName, Date birthDate);
 }

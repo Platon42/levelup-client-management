@@ -1,5 +1,8 @@
 package ru.levelup.bank.clientmanagement.dto;
 
+import lombok.Generated;
+
+@Generated
 public enum CurrencyCode {
 
     AED("United Arab Emirates Dirham"),
